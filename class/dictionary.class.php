@@ -511,14 +511,6 @@ class Dictionary extends CommonObject
 				}
             }
 
-			if (!$error) {
-				// Create indexes of the tables
-				$res = $this->createIndexesTable();
-				if ($res < 0) {
-					$error++;
-				}
-			}
-
             if (!$error) {
                 // Create sub dictionary table
                 foreach ($this->fields as $field) {
@@ -548,6 +540,15 @@ class Dictionary extends CommonObject
                     $error++;
                 }
             }
+
+            // Todo creation d'un nouveau field avec index
+			if (!$error) {
+				// Create indexes of the tables
+				$res = $this->createIndexesTable();
+				if ($res < 0) {
+					$error++;
+				}
+			}
 
             if (!$error) {
                 $this->db->commit();
@@ -1318,12 +1319,15 @@ class Dictionary extends CommonObject
 		$classname = $name . "Dictionary";
 		$file = "/" . (!empty($root_path) ? $root_path : $module . "/core/dictionaries") . "/" . strtolower($name) . ".dictionary.php";
 
+		$included = true;
 		if (!class_exists($classname, false)) {
-			dol_include_once($file);
+			$included = dol_include_once($file);
 		}
 
-		$dictionary = new $classname($db);
-		if (is_object($dictionary)) $dictionary->root_path = $root_path;
+		if ($included) {
+			$dictionary = new $classname($db);
+			if (is_object($dictionary)) $dictionary->root_path = $root_path;
+		}
 
 		return $dictionary;
 	}
@@ -2137,7 +2141,7 @@ class Dictionary extends CommonObject
 					$this->fields[$fieldName]['type'] = $old_type;
 					return $out;
 				case 'boolean':
-					return $form->selectyesno($fieldHtmlName, !empty($search_filters[$fieldName]), 1, false, 1);
+					return $form->selectyesno($fieldHtmlName, $search_filters[$fieldName] >= 0 && isset($search_filters[$fieldName]) ? !empty($search_filters[$fieldName]) : '', 1, false, 1);
 				case 'custom':
 					return $this->showInputSearchCustomField($fieldName);
 				default: // unknown
@@ -3517,7 +3521,10 @@ class DictionaryLine extends CommonObjectLine
                 }
             }
             $sql .= implode(', ', $set_statement);
-            $sql .= ' WHERE ' . $cq . $this->dictionary->rowid_field . $cq . ' = ' . $this->id;
+			$sql .= ' WHERE ' . $cq . $this->dictionary->rowid_field . $cq . ' = ' . $this->id;
+			if ($this->dictionary->is_multi_entity && $this->dictionary->has_entity) {
+				$sql .= ' AND ' . $cq . $this->dictionary->entity_field . $cq . ' = ' . $this->old->entity;
+			}
 
             dol_syslog(__METHOD__, LOG_DEBUG);
             if (!empty($set_statement)) {
@@ -3681,6 +3688,9 @@ class DictionaryLine extends CommonObjectLine
 
 			// Delete line of dictionary table
             $sql = 'DELETE FROM ' . MAIN_DB_PREFIX . $this->dictionary->table_name . ' WHERE ' . $cq . $this->dictionary->rowid_field . $cq . ' = ' . $this->id;
+			if ($this->dictionary->is_multi_entity && $this->dictionary->has_entity) {
+				$sql .= ' AND ' . $cq . $this->dictionary->entity_field . $cq . ' = ' . $this->entity;
+			}
 
             dol_syslog(__METHOD__, LOG_DEBUG);
             $resql = $this->db->query($sql);
@@ -3750,6 +3760,9 @@ class DictionaryLine extends CommonObjectLine
         $sql = 'UPDATE ' . MAIN_DB_PREFIX . $this->dictionary->table_name .
             ' SET ' . $cq . $this->dictionary->active_field . $cq . ' = ' . $this->active .
             ' WHERE ' . $cq . $this->dictionary->rowid_field . $cq . ' = ' . $this->id;
+		if ($this->dictionary->is_multi_entity && $this->dictionary->has_entity) {
+			$sql .= ' AND ' . $cq . $this->dictionary->entity_field . $cq . ' = ' . $this->old->entity;
+		}
 
         dol_syslog(__METHOD__, LOG_DEBUG);
         $resql = $this->db->query($sql);
@@ -3809,6 +3822,9 @@ class DictionaryLine extends CommonObjectLine
 		$sql = 'UPDATE ' . MAIN_DB_PREFIX . $this->dictionary->table_name .
 			' SET ' . $cq . $this->dictionary->entity_field . $cq . ' = ' . $this->entity .
 			' WHERE ' . $cq . $this->dictionary->rowid_field . $cq . ' = ' . $this->id;
+		if ($this->dictionary->is_multi_entity && $this->dictionary->has_entity) {
+			$sql .= ' AND ' . $cq . $this->dictionary->entity_field . $cq . ' = ' . $this->old->entity;
+		}
 
 		dol_syslog(__METHOD__, LOG_DEBUG);
 		$resql = $this->db->query($sql);
