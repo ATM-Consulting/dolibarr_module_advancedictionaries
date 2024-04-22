@@ -3395,6 +3395,9 @@ class DictionaryLine extends CommonObjectLine
                 $errors[] = $this->db->lasterror();
             } else {
                 $this->id = $this->dictionary->is_rowid_auto_increment ? $this->db->last_insert_id(MAIN_DB_PREFIX . $this->dictionary->table_name) : $rowid;
+				if ($this->dictionary->has_entity) {
+					$this->entity = $conf->entity;
+				}
             }
 
             // Insert post line of dictionary table
