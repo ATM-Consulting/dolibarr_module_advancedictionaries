@@ -6,6 +6,7 @@ Le format du fichier est basé sur [Tenez un ChangeLog](http://keepachangelog.co
 ## [14.0.2] - 22-09-2023
 - Correction du filtre sur les colonnes de type boolean
 - Correction des requetes UPDATE et DELETE en prenant en compte l'entité dans les requêtes
+- mise en place CI Gitlab
 
 ## [14.0.1] - 26-02-2024
 - Changement de numérotation
