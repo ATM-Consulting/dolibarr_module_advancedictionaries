@@ -59,10 +59,11 @@ $constantLastVersion = !empty($modClass->getVersion()) ? $modClass->getVersion()
 $constantSireneVersion = !empty($conf->global->MODULE_SIRENE_VERSION) ? $conf->global->MODULE_SIRENE_VERSION : 'NC';
 
 $supportvalue = "/*****"."<br>";
-$supportvalue.= " * Module : AdvanceDictionaries"."<br>";
+$supportvalue.= " * Module : ".$langs->trans("Module163017Name")."<br>";
 $supportvalue.= " * Module version : ".$constantLastVersion."<br>";
 $supportvalue.= " * Dolibarr version : ".DOL_VERSION."<br>";
 $supportvalue.= " * Dolibarr version installation initiale : ".$conf->global->MAIN_VERSION_LAST_INSTALL."<br>";
+$supportvalue.= " * Version PHP : ".PHP_VERSION."<br>";
 $supportvalue.= " *****/"."<br><br>";
 $supportvalue.= "Description de votre problème :"."<br>";
 
