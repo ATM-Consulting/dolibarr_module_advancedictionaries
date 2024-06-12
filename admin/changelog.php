@@ -42,7 +42,8 @@ if (!$user->admin) accessforbidden();
  * View
  */
 
-llxHeader();
+ $wikihelp='EN:AdvanceDictionaries_En|FR:AdvanceDictionaries_Fr|ES:AdvanceDictionaries_Es';
+ llxHeader('', $langs->trans("AdvanceDictionariesSetup"), $wikihelp);
 
 $linkback='<a href="'.DOL_URL_ROOT.'/admin/modules.php">'.$langs->trans("BackToModuleList").'</a>';
 print load_fiche_titre($langs->trans("AdvanceDictionariesSetup"),$linkback,'title_setup');
@@ -51,7 +52,7 @@ print "<br>\n";
 
 $head=advancedictionaries_prepare_head();
 
-dol_fiche_head($head, 'changelog', $langs->trans("Module163017Name"), 0, 'action');
+print dol_get_fiche_head($head, 'changelog', $langs->trans("Module163017Name"), 0, 'opendsi@advancedictionaries');
 
 $changelog = opendsi_common_getChangeLog('advancedictionaries');
 
