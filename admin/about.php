@@ -42,7 +42,8 @@ if (!$user->admin) accessforbidden();
  * View
  */
 
-llxHeader();
+$wikihelp='EN:AdvanceDictionaries_En|FR:AdvanceDictionaries_Fr|ES:AdvanceDictionaries_Es';
+llxHeader('', $langs->trans("AdvanceDictionariesSetup"), $wikihelp);
 
 $linkback='<a href="'.DOL_URL_ROOT.'/admin/modules.php">'.$langs->trans("BackToModuleList").'</a>';
 print load_fiche_titre($langs->trans("AdvanceDictionariesSetup"),$linkback,'title_setup');
@@ -51,17 +52,18 @@ print "<br>\n";
 
 $head=advancedictionaries_prepare_head();
 
-dol_fiche_head($head, 'about', $langs->trans("Module163017Name"), 0, 'action');
+print dol_get_fiche_head($head, 'about', $langs->trans("Module163017Name"), 0, 'opendsi@advancedictionaries');
 
 $modClass = new modAdvanceDictionaries($db);
 $constantLastVersion = !empty($modClass->getVersion()) ? $modClass->getVersion() : 'NC';
 $constantSireneVersion = !empty($conf->global->MODULE_SIRENE_VERSION) ? $conf->global->MODULE_SIRENE_VERSION : 'NC';
 
 $supportvalue = "/*****"."<br>";
-$supportvalue.= " * Module : AdvanceDictionaries"."<br>";
+$supportvalue.= " * Module : ".$langs->trans("Module163017Name")."<br>";
 $supportvalue.= " * Module version : ".$constantLastVersion."<br>";
 $supportvalue.= " * Dolibarr version : ".DOL_VERSION."<br>";
 $supportvalue.= " * Dolibarr version installation initiale : ".$conf->global->MAIN_VERSION_LAST_INSTALL."<br>";
+$supportvalue.= " * Version PHP : ".PHP_VERSION."<br>";
 $supportvalue.= " *****/"."<br><br>";
 $supportvalue.= "Description de votre problème :"."<br>";
 
