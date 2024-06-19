@@ -484,7 +484,7 @@ class Dictionary extends CommonObject
 			$cq = $this->db->type == 'pgsql' ? '"' : '`';
 
             // Create dictionary table
-            $sql = 'CREATE TABLE ' . MAIN_DB_PREFIX . $this->table_name . ' (' . $cq . $this->rowid_field . $cq . ' INTEGER NOT NULL';
+            $sql = 'CREATE TABLE ' . MAIN_DB_PREFIX . $this->table_name . ' (' . $cq . $this->rowid_field . $cq . ' INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY';
             foreach ($this->fields as $field) {
                 $instructionSQL = $this->definitionTableFieldInstructionSQL($field);
                 $sql .= !empty($instructionSQL) ? ', ' . $instructionSQL : '';
