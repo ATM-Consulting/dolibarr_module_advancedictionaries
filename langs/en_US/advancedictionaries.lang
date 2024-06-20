@@ -29,6 +29,7 @@ AdvanceDictionariesReplaceOldDictionariesPage   = Replace old dictionaries page
 AdvanceDictionariesFieldRequired    = Field required
 AdvanceDictionariesDictionaryLines  = Dictionary lines
 AdvanceDictionariesModifyEntity     = Modify entity
+AdvanceDictionariesAllEntities      = All entities
 
 ############################################################
 ### Confirm box

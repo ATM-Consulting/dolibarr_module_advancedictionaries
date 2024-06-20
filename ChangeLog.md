@@ -3,6 +3,10 @@ Le format du fichier est basé sur [Tenez un ChangeLog](http://keepachangelog.co
 
 ## [Non Distribué]
 
+## [14.0.5] - 20-06-2024
+- L'entité 1 n'est plus l'entité globale
+- Rajout de l'entité 0 comme entité globale (affichage dans les listes et action en masse)
+
 ## [14.0.4] - 11-06-2024
 - Ajout version de PHP.
 
@@ -254,8 +258,12 @@ Le format du fichier est basé sur [Tenez un ChangeLog](http://keepachangelog.co
 ## [4.0.0] - 16-07-2018
 - Version initial.
 
+<<<<<<< Updated upstream
 [Non Distribué]: https://github.com/OPEN-DSI/dolibarr_module_advancedictionaries/compare/14.0.4...HEAD
 [14.0.4]: https://github.com/OPEN-DSI/dolibarr_module_advancedictionaries/commits/14.0.4
+=======
+[Non Distribué]: https://github.com/OPEN-DSI/dolibarr_module_advancedictionaries/compare/14.0.3...HEAD
+>>>>>>> Stashed changes
 [14.0.3]: https://github.com/OPEN-DSI/dolibarr_module_advancedictionaries/commits/14.0.3
 [14.0.2]: https://github.com/OPEN-DSI/dolibarr_module_advancedictionaries/commits/14.0.2
 [14.0.1]: https://github.com/OPEN-DSI/dolibarr_module_advancedictionaries/commits/14.0.1
