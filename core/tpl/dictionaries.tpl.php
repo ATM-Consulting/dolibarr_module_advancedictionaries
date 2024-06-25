@@ -230,7 +230,7 @@ if (isset($dictionary)) {
 				$entity = GETPOST('entity', 'int');
 				if ($entity === '') $entity = $conf->entity;
 				$formquestion = array(
-					array('type' => 'other', 'name' => 'entity', 'label' => $langs->trans("Entity"), 'value' => $actionsmulticompany->select_entities($entity))
+					array('type' => 'other', 'name' => 'entity', 'label' => $langs->trans("Entity"), 'value' => $actionsmulticompany->select_entities($entity, 'entity', '', false, false, false, false, 1))
 				);
 				print $form->formconfirm($_SERVER["PHP_SELF"], $langs->trans("AdvanceDictionariesConfirmMassModifyEntity"), $langs->trans("AdvanceDictionariesConfirmMassModifyEntityQuestion", count($toselect)), "modifyentity", $formquestion, '', 0, 200, 500, 1);
 			}
@@ -351,13 +351,17 @@ if (isset($dictionary)) {
 				if ($dictionary->is_multi_entity && $dictionary->has_entity && $dictionary->show_entity_management && !empty($conf->multicompany->enabled)) {
 					print '<td class="center nowrap">';
 					if (!isset($entity_cached[$line->entity])) {
-						$result = $daomulticompany->fetch($line->entity);
-						if ($result < 0) {
-							setEventMessages($daomulticompany->error, $daomulticompany->errors, 'errors');
-						} elseif ($result == 0) {
-							$entity_cached[$line->entity] = $line->entity;
+						if ($line->entity > 0) {
+							$result = $daomulticompany->fetch($line->entity);
+							if ($result < 0) {
+								setEventMessages($daomulticompany->error, $daomulticompany->errors, 'errors');
+							} elseif ($result == 0) {
+								$entity_cached[$line->entity] = $line->entity;
+							} else {
+								$entity_cached[$line->entity] = $daomulticompany->label;
+							}
 						} else {
-							$entity_cached[$line->entity] = $daomulticompany->label;
+							$entity_cached[$line->entity] = $langs->trans('AdvanceDictionariesAllEntities');
 						}
 					}
 					print '<span class="'.$class_fa.' fa-globe"></span><span class="multiselect-selected-title-text">' . $entity_cached[$line->entity] . '</span>';
