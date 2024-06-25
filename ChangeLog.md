@@ -3,6 +3,10 @@ Le format du fichier est basé sur [Tenez un ChangeLog](http://keepachangelog.co
 
 ## [Non Distribué]
 
+## [14.0.5] - 20-06-2024
+- L'entité 1 n'est plus l'entité globale
+- Rajout de l'entité 0 comme entité globale (affichage dans les listes et action en masse)
+
 ## [14.0.4] - 11-06-2024
 - Ajout version de PHP.
 
