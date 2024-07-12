@@ -4944,8 +4944,12 @@ class DictionaryLine extends CommonObjectLine
 						}
 						break;
 					case 'int':
-						$tmp = explode(',', $size);
-						$newsize = $tmp[0] + 1 + ($tmp[1] ?? 0);
+						if (empty($size)) {
+							$newsize = 10;
+						} else {
+							$tmp = explode(',', $size);
+							$newsize = $tmp[0] + 1 + ($tmp[1] ?? 0);
+						}
 						$out = '<input type="text" class="flat' . $moreClasses . ' maxwidthonsmartphone" id="' . $fieldHtmlName . '" name="' . $fieldHtmlName . '" maxlength="' . $newsize . '" value="' . $value . '"' . $moreAttributes . '>';
 						break;
 					case 'float':

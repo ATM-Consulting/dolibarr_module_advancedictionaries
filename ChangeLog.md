@@ -258,12 +258,9 @@ Le format du fichier est basé sur [Tenez un ChangeLog](http://keepachangelog.co
 ## [4.0.0] - 16-07-2018
 - Version initial.
 
-<<<<<<< Updated upstream
-[Non Distribué]: https://github.com/OPEN-DSI/dolibarr_module_advancedictionaries/compare/14.0.4...HEAD
+[Non Distribué]: https://github.com/OPEN-DSI/dolibarr_module_advancedictionaries/compare/14.0.5...HEAD
+[14.0.5]: https://github.com/OPEN-DSI/dolibarr_module_advancedictionaries/commits/14.0.5
 [14.0.4]: https://github.com/OPEN-DSI/dolibarr_module_advancedictionaries/commits/14.0.4
-=======
-[Non Distribué]: https://github.com/OPEN-DSI/dolibarr_module_advancedictionaries/compare/14.0.3...HEAD
->>>>>>> Stashed changes
 [14.0.3]: https://github.com/OPEN-DSI/dolibarr_module_advancedictionaries/commits/14.0.3
 [14.0.2]: https://github.com/OPEN-DSI/dolibarr_module_advancedictionaries/commits/14.0.2
 [14.0.1]: https://github.com/OPEN-DSI/dolibarr_module_advancedictionaries/commits/14.0.1
