@@ -6,6 +6,7 @@ Le format du fichier est basé sur [Tenez un ChangeLog](http://keepachangelog.co
 ## [14.0.6] - 13-08-2024
 - Correction de la perenité du trie des listes lors des actions ajout/modification/suppressions ...
 - Correction de l'uniformité d'affichage du bouton 'Ajouter'
+- Correction des titres de liste sticky (Oblyon), affichage des liste sorti de l'onglet 
 
 ## [14.0.5] - 20-06-2024
 - L'entité 1 n'est plus l'entité globale

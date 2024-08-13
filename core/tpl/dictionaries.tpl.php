@@ -70,6 +70,9 @@ if (!isset($dictionary) && empty($hide_description_block))
     print $langs->trans("DictionaryDesc");
     print " ".$langs->trans("OnlyActiveElementsAreShown")."<br>\n";
 }
+if (!empty($head)) {
+	print dol_get_fiche_end();
+}
 
 //------------------------------------------------------------------------------------------------------------------
 // Confirm box
