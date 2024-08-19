@@ -245,7 +245,7 @@ if (empty($reshook)) {
 
 				$db->begin();
 
-				$objecttmp = new $objectclass($db);
+				$objecttmp = $dictionary->getNewDictionaryLine();
 				$nbok = 0;
 				foreach ($toselect as $toselectid) {
 					$result = $objecttmp->fetch($toselectid);
