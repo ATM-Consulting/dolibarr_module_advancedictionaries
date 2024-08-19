@@ -176,7 +176,7 @@ if (empty($reshook)) {
 
                 if ($dictionary->addLine($fieldsValue, $user) > 0) {
                     setEventMessage($langs->transnoentities("RecordSaved"));
-                    header('Location: ' . $_SERVER['PHP_SELF'] . '?' . $param2);
+                    header('Location: ' . $_SERVER['PHP_SELF'] . '?' . $param3);
                     exit;
                 } else {
                     setEventMessages($dictionary->error, $dictionary->errors, 'errors');
@@ -190,7 +190,7 @@ if (empty($reshook)) {
 
                 if ($dictionary->updateLine($rowid, $fieldsValue, $user) > 0) {
                     setEventMessage($langs->transnoentities("RecordSaved"));
-                    header('Location: ' . $_SERVER['PHP_SELF'] . '?' . $param2 . '#rowid-' . $rowid);
+                    header('Location: ' . $_SERVER['PHP_SELF'] . '?' . $param3 . '#rowid-' . $rowid);
                     exit;
                 } else {
                     setEventMessages($dictionary->error, $dictionary->errors, 'errors');
@@ -201,7 +201,7 @@ if (empty($reshook)) {
             elseif ($action == 'confirm_delete_line' && $confirm == 'yes' && $dictionary->lineCanBeDeleted && $canDelete) {
                 if ($dictionary->deleteLine($rowid, $user) > 0) {
                     setEventMessage($langs->transnoentities("RecordDeleted"));
-                    header('Location: ' . $_SERVER['PHP_SELF'] . '?' . $param2 . '#rowid-' . $prevrowid);
+                    header('Location: ' . $_SERVER['PHP_SELF'] . '?' . $param3 . '#rowid-' . $prevrowid);
                     exit;
                 } else {
                     setEventMessages($dictionary->error, $dictionary->errors, 'errors');
@@ -212,7 +212,7 @@ if (empty($reshook)) {
                 $res = $dictionary->activeLine($rowid, 1, $user);
                 if ($res > 0) {
                     setEventMessage($langs->transnoentities("RecordSaved"));
-                    header('Location: ' . $_SERVER['PHP_SELF'] . '?' . $param2 . '#rowid-' . $rowid);
+                    header('Location: ' . $_SERVER['PHP_SELF'] . '?' . $param3 . '#rowid-' . $rowid);
                     exit;
                 } elseif ($res < 0) {
                     setEventMessages($dictionary->error, $dictionary->errors, 'errors');
@@ -223,7 +223,7 @@ if (empty($reshook)) {
                 $res = $dictionary->activeLine($rowid, 0, $user);
                 if ($res > 0) {
                     setEventMessage($langs->transnoentities("RecordSaved"));
-                    header('Location: ' . $_SERVER['PHP_SELF'] . '?' . $param2 . '#rowid-' . $rowid);
+                    header('Location: ' . $_SERVER['PHP_SELF'] . '?' . $param3 . '#rowid-' . $rowid);
                     exit;
                 } elseif ($res < 0) {
                     setEventMessages($dictionary->error, $dictionary->errors, 'errors');
@@ -245,7 +245,7 @@ if (empty($reshook)) {
 
 				$db->begin();
 
-				$objecttmp = new $objectclass($db);
+				$objecttmp = $dictionary->getNewDictionaryLine();
 				$nbok = 0;
 				foreach ($toselect as $toselectid) {
 					$result = $objecttmp->fetch($toselectid);

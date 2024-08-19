@@ -3,6 +3,12 @@ Le format du fichier est basé sur [Tenez un ChangeLog](http://keepachangelog.co
 
 ## [Non Distribué]
 
+## [14.0.6] - 13-08-2024
+- Correction de la perenité du trie des listes lors des actions ajout/modification/suppressions ...
+- Correction de l'uniformité d'affichage du bouton 'Ajouter'
+- Correction des titres de liste sticky (Oblyon), affichage des liste sorti de l'onglet
+- Correction de l'action en masse du changement de l'entité des lignes de dictionnaire selectionnées
+
 ## [14.0.5] - 20-06-2024
 - L'entité 1 n'est plus l'entité globale
 - Rajout de l'entité 0 comme entité globale (affichage dans les listes et action en masse)
@@ -258,7 +264,8 @@ Le format du fichier est basé sur [Tenez un ChangeLog](http://keepachangelog.co
 ## [4.0.0] - 16-07-2018
 - Version initial.
 
-[Non Distribué]: https://github.com/OPEN-DSI/dolibarr_module_advancedictionaries/compare/14.0.5...HEAD
+[Non Distribué]: https://github.com/OPEN-DSI/dolibarr_module_advancedictionaries/compare/14.0.6...HEAD
+[14.0.6]: https://github.com/OPEN-DSI/dolibarr_module_advancedictionaries/commits/14.0.6
 [14.0.5]: https://github.com/OPEN-DSI/dolibarr_module_advancedictionaries/commits/14.0.5
 [14.0.4]: https://github.com/OPEN-DSI/dolibarr_module_advancedictionaries/commits/14.0.4
 [14.0.3]: https://github.com/OPEN-DSI/dolibarr_module_advancedictionaries/commits/14.0.3

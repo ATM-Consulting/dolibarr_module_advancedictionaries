@@ -70,6 +70,9 @@ if (!isset($dictionary) && empty($hide_description_block))
     print $langs->trans("DictionaryDesc");
     print " ".$langs->trans("OnlyActiveElementsAreShown")."<br>\n";
 }
+if (!empty($head)) {
+	print dol_get_fiche_end();
+}
 
 //------------------------------------------------------------------------------------------------------------------
 // Confirm box
@@ -193,10 +196,7 @@ if (isset($dictionary)) {
 
             $addButton = '';
             if ($dictionary->lineCanBeAdded && $canCreate) {
-                $addButton = '<a href="' . $_SERVER['PHP_SELF'] . '?' . ltrim($param3, '&') . '&action=add_line&module=' . urlencode($dictionary->module) . '&name=' . urlencode($dictionary->name) . '&token='. newToken() .'&'.$now.'="' . ((float)DOL_VERSION >= 8.0 ? 'class=" butActionNew"' : '') . '>';
-                $addButton .= $langs->trans("Add");
-                if ((float)DOL_VERSION >= 8.0) $addButton .= '<span class="'.$class_fa.' fa-plus-circle valignmiddle"></span>';
-                $addButton .= '</a>';
+				$addButton .= dolGetButtonTitle($langs->trans('Add'), '', 'fa fa-plus-circle', $_SERVER['PHP_SELF'] . '?' . ltrim($param3, '&') . '&action=add_line&module=' . urlencode($dictionary->module) . '&name=' . urlencode($dictionary->name) . '&token='. newToken() .'&'.$now.'=', '', $dictionary->lineCanBeAdded && $canCreate);
             }
 
             $arrayofselected = is_array($toselect) ? $toselect : array();
