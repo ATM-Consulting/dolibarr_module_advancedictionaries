@@ -1,5 +1,5 @@
 {
-    "dlb_min_version": 14,
+    "dlb_min_version": 10,
     "dlb_max_version": 18,
     "php_min_version": 7.1,
     "php_max_version": 8.2

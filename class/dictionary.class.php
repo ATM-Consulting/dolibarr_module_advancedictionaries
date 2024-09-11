@@ -3364,6 +3364,7 @@ class DictionaryLine extends CommonObjectLine
             $error = 0;
             $errors = array();
             $this->fields = $fieldsValue;
+			if ($this->dictionary->has_entity && !isset($this->entity)) $this->entity = $conf->entity;
 
 			$cq = $this->db->type == 'pgsql' ? '"' : '`';
 
@@ -3383,7 +3384,7 @@ class DictionaryLine extends CommonObjectLine
 				$cq . ', ' . $cq . $this->dictionary->active_field . ($this->dictionary->has_entity ? $cq . ', ' . $cq . $this->dictionary->entity_field : '') .
 				$cq . ') VALUES (' .
                 (!$this->dictionary->is_rowid_auto_increment ? $rowid . ', ' : '') .
-                implode(', ', $insert_statement) . ', 1' . ($this->dictionary->has_entity ? ', ' . $conf->entity : '') . ')';
+                implode(', ', $insert_statement) . ', 1' . ($this->dictionary->has_entity ? ', ' . $this->entity : '') . ')';
 
             dol_syslog(__METHOD__, LOG_DEBUG);
             $resql = $this->db->query($sql);
@@ -3393,9 +3394,6 @@ class DictionaryLine extends CommonObjectLine
                 $errors[] = $this->db->lasterror();
             } else {
                 $this->id = $this->dictionary->is_rowid_auto_increment ? $this->db->last_insert_id(MAIN_DB_PREFIX . $this->dictionary->table_name) : $rowid;
-				if ($this->dictionary->has_entity) {
-					$this->entity = $conf->entity;
-				}
             }
 
             // Insert post line of dictionary table
