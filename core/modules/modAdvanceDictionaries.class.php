@@ -134,7 +134,8 @@ class modAdvanceDictionaries extends DolibarrModules
 		//                             1=>array('MYMODULE_MYNEWCONST2','chaine','myvalue','This is another constant to add',0, 'current', 1)
 		// );
 		$this->const = array(
-            0=>array('ADVANCEDICTIONARIES_REPLACE_OLD_DICTIONARIES_PAGE','chaine','0','Replace original dictionaries.',0, 'current')
+            0 => array('ADVANCEDICTIONARIES_REPLACE_OLD_DICTIONARIES_PAGE', 'chaine', '0', 'Replace original dictionaries.', 0, 'current'),
+			1 => array('ADVANCEDICTIONARIES_VERSION', 'chaine', $this->version, 'AdvanceDictionaries version', 0, 'current'),
         );
 
 		// Array to add new pages in new tabs
