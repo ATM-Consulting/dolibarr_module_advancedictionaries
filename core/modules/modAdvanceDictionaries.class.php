@@ -73,7 +73,7 @@ class modAdvanceDictionaries extends DolibarrModules
         $this->editor_email		= 'support@easya.solutions';
 
 		// Possible values for version are: 'development', 'experimental', 'dolibarr', 'dolibarr_deprecated' or a version string like 'x.y.z'
-		$this->version = file_get_contents(__DIR__.'/../../VERSION');
+		$this->version = trim(file_get_contents(__DIR__.'/../../VERSION'));
 		$this->url_last_version = 'https://git.open-dsi.fr/dolibarr-extension/'.strtolower($this->name).'/-/raw/2024/VERSION';
 		// Key used in llx_const table to save module status enabled/disabled (where MYMODULE is value of property name of module in uppercase)
 		$this->const_name = 'MAIN_MODULE_'.strtoupper($this->name);

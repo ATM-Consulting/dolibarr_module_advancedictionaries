@@ -3,6 +3,9 @@ Le format du fichier est basé sur [Tenez un ChangeLog](http://keepachangelog.co
 
 ## [Non Distribué]
 
+## [14.0.8] - 13-09-2024
+- Trim version
+
 ## [14.0.7] - 11-09-2024
 - Possibilité de forcer l'entité a la creation d'une ligne
 
@@ -267,7 +270,8 @@ Le format du fichier est basé sur [Tenez un ChangeLog](http://keepachangelog.co
 ## [4.0.0] - 16-07-2018
 - Version initial.
 
-[Non Distribué]: https://github.com/OPEN-DSI/dolibarr_module_advancedictionaries/compare/14.0.7...HEAD
+[Non Distribué]: https://github.com/OPEN-DSI/dolibarr_module_advancedictionaries/compare/14.0.8...HEAD
+[14.0.8]: https://github.com/OPEN-DSI/dolibarr_module_advancedictionaries/commits/14.0.8
 [14.0.7]: https://github.com/OPEN-DSI/dolibarr_module_advancedictionaries/commits/14.0.7
 [14.0.6]: https://github.com/OPEN-DSI/dolibarr_module_advancedictionaries/commits/14.0.6
 [14.0.5]: https://github.com/OPEN-DSI/dolibarr_module_advancedictionaries/commits/14.0.5
