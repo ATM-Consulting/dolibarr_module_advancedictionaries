@@ -2140,7 +2140,7 @@ class Dictionary extends CommonObject
 					$this->fields[$fieldName]['type'] = $old_type;
 					return $out;
 				case 'boolean':
-					return $form->selectyesno($fieldHtmlName, $search_filters[$fieldName] >= 0 && isset($search_filters[$fieldName]) ? !empty($search_filters[$fieldName]) : '', 1, false, 1);
+					return $form->selectyesno($fieldHtmlName, (isset($search_filters[$fieldName]) && $search_filters[$fieldName] >= 0) ? !empty($search_filters[$fieldName]) : '', 1, false, 1);
 				case 'custom':
 					return $this->showInputSearchCustomField($fieldName);
 				default: // unknown
@@ -2239,7 +2239,7 @@ class Dictionary extends CommonObject
                         $value_key = GETPOST($fieldHtmlName, 'alpha');
                         break;
                     case 'text':
-						$value_key = GETPOST($fieldHtmlName, $field['no_wysiwyg'] ? 'alphanohtml' : 'restricthtml');
+						$value_key = GETPOST($fieldHtmlName, (isset($field['no_wysiwyg']) && $field['no_wysiwyg']) ? 'alphanohtml' : 'restricthtml');
                         break;
                     case 'checkbox':
                     case 'chkbxlst':
